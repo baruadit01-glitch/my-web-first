@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special For My Future Wife ❤️</title>
+  
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ================= BASE STYLES & RESET ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #0d0914;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ================= BACKGROUND GLOW & ANIMATION ================= */
+    .bg-glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 0, 128, 0.35), transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(121, 40, 202, 0.35), transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.25), transparent 55%);
+      filter: blur(60px);
+      z-index: 1;
+      animation: pulseGlow 10s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1) rotate(0deg); }
+      100% { transform: scale(1.15) rotate(5deg); }
+    }
+
+    /* Floating Heart Particles Container */
+    #heart-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .floating-heart-particle {
+      position: absolute;
+      color: rgba(255, 42, 116, 0.6);
+      font-size: 1.2rem;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(105vh) scale(0.5) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ================= GLASSMORPHISM CARD CONTAINER ================= */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      padding: 30px 25px;
+      max-width: 440px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+                  0 0 25px rgba(255, 0, 128, 0.25);
+      z-index: 5;
+      position: relative;
+    }
+
+    .glow-text {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 25px rgba(255, 0, 128, 0.6);
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #e0e0e0;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* ================= SLIDE TRANSITIONS ================= */
+    .slide {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(40px) scale(0.92);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      z-index: 4;
+      pointer-events: auto;
+    }
+
+    /* ================= FLOATING MUSIC CONTROL ================= */
+    .music-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 20;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 15px rgba(255, 0, 128, 0.4);
+      transition: all 0.3s;
+    }
+
+    .music-control i {
+      color: #ff4081;
+      font-size: 1.2rem;
+      text-shadow: 0 0 8px #ff4081;
+    }
+
+    .music-control.playing {
+      animation: spin 3.5s linear infinite;
+      box-shadow: 0 0 25px rgba(255, 0, 128, 0.8);
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ================= LOCKSCREEN (PIN) ================= */
+    .lock-icon-wrapper {
+      margin-bottom: 15px;
+    }
+
+    .glow-icon {
+      font-size: 2.8rem;
+      color: #ff2a74;
+      text-shadow: 0 0 20px #ff2a74;
+      animation: heartPulse 1.5s infinite alternate;
+    }
+
+    @keyframes heartPulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.15); }
+    }
+
+    .pin-display {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0 10px 0;
+    }
+
+    .pin-display .dot {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .pin-display .dot.filled {
+      background: #ff2a74;
+      box-shadow: 0 0 12px #ff2a74, 0 0 20px #ff2a74;
+      border-color: #ff2a74;
+      transform: scale(1.2);
+    }
+
+    .error-msg {
+      color: #ff4d4d;
+      font-size: 0.85rem;
+      height: 20px;
+      visibility: hidden;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px rgba(255, 77, 77, 0.8);
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      justify-items: center;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .keypad button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .keypad button:active {
+      background: rgba(255, 42, 116, 0.6);
+      transform: scale(0.88);
+      box-shadow: 0 0 15px rgba(255, 42, 116, 0.8);
+    }
+
+    /* Keypad Shake Animation */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-10px); }
+      40%, 80% { transform: translateX(10px); }
+    }
+
+    /* ================= GENERAL BUTTONS ================= */
+    .btn-next {
+      margin-top: 15px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #ff007f, #7928ca);
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-next:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+    }
+
+    .btn-next:active {
+      transform: translateY(0);
+    }
+
+    /* ================= SLIDE 1 & 5 SPECIAL ELEMENTS ================= */
+    .big-heart {
+      font-size: 4.5rem;
+      margin: 15px 0;
+      display: inline-block;
+      animation: heartBeat 1.2s infinite;
+      text-shadow: 0 0 30px rgba(255, 0, 128, 0.8);
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.25); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.15); }
+    }
+
+    /* ================= GALLERY GRID & MODAL ================= */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 15px 0 20px 0;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(13, 9, 20, 0.5);
+      backdrop-filter: blur(2px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: #ff007f;
+      font-size: 1.3rem;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-4px);
+      border-color: #ff007f;
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .photo-card:hover .photo-overlay {
+      opacity: 1;
+    }
+
+    /* Modal Popup */
+    .modal {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 100;
+      padding: 20px;
+    }
+
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: rgba(20, 12, 35, 0.9);
+      border: 1px solid rgba(255, 0, 128, 0.4);
+      border-radius: 24px;
+      padding: 25px;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 30px rgba(255, 0, 128, 0.4);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 1.5rem;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #ff007f;
+    }
+
+    /* ================= LOVE LETTER (TYPING EFFECT) ================= */
+    .letter-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 16px;
+      min-height: 150px;
+      text-align: left;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      border-left: 3px solid #ff2a74;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background-color: #ff2a74;
+      vertical-align: middle;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ================= GAME / QUIZ SECTION ================= */
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 15px 0;
+    }
+
+    .btn-opt {
+      padding: 12px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn-opt:hover {
+      background: rgba(255, 42, 116, 0.25);
+      border-color: #ff2a74;
+      transform: translateX(4px);
+    }
+
+    .game-result {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #00ffcc;
+      text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+      min-height: 24px;
+    }
+
+    /* ================= RESPONSIVE ADJUSTMENTS ================= */
+    @media (max-height: 700px) {
+      .glass-card { padding: 20px 18px; }
+      .glow-text { font-size: 1.4rem; }
+      .keypad button { width: 52px; height: 52px; font-size: 1.1rem; }
+      .gallery-grid { gap: 8px; }
+      .big-heart { font-size: 3.5rem; margin: 10px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Animated Neon Glow -->
+  <div class="bg-glow"></div>
+
+  <!-- Floating Heart Particles -->
+  <div id="heart-particles"></div>
+
+  <!-- Audio Player (Bruno Mars - Versace on the Floor Romantic Theme) -->
+  <audio id="bg-music" loop preload="auto">
+    <!-- Valid online romantic background music stream as default fallback -->
+    <source src="24K Magic CD 1 TRACK 5 (FLAC).mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Floating Music Toggle Button -->
+  <div class="music-control" id="music-btn" onclick="toggleMusic()" title="Play / Pause Music">
+    <i class="fas fa-music"></i>
+  </div>
+
+  <!-- ================= LAYAR LOCKSCREEN (PIN HP) ================= -->
+  <div id="lockscreen" class="slide active">
+    <div class="glass-card lock-card">
+      <div class="lock-icon-wrapper">
+        <i class="fas fa-heart glow-icon"></i>
+      </div>
+      <h2 class="glow-text">Lockscreen Rahasia</h2>
+      <p class="subtitle">Masukkan PIN 8 digit ya grace sayang ❤️</p>
+      
+      <!-- PIN Dots Display -->
+      <div class="pin-display" id="pin-display">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      
+      <p id="error-msg" class="error-msg">PIN Salah! Coba lagi babyy ❤️</p>
+
+      <!-- Keypad -->
+      <div class="keypad">
+        <button onclick="pressKey('1')">1</button>
+        <button onclick="pressKey('2')">2</button>
+        <button onclick="pressKey('3')">3</button>
+        <button onclick="pressKey('4')">4</button>
+        <button onclick="pressKey('5')">5</button>
+        <button onclick="pressKey('6')">6</button>
+        <button onclick="pressKey('7')">7</button>
+        <button onclick="pressKey('8')">8</button>
+        <button onclick="pressKey('9')">9</button>
+        <button onclick="clearPin()" style="font-size: 1rem;"><i class="fas fa-redo"></i></button>
+        <button onclick="pressKey('0')">0</button>
+        <button onclick="deletePin()" style="font-size: 1rem;"><i class="fas fa-backspace"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SLIDE 1: WELCOME ================= -->
+  <div id="slide-1" class="slide">
+    <div class="glass-card">
+      <h1 class="glow-text">Halo Grace Sayang ✨</h1>
+      <p class="subtitle">Wahhh hebatt yahh babykuu kamu berhasil!</p>
+      <div class="big-heart">💖</div>
+      <div>
+        <button class="btn-next" onclick="nextSlide(2)">
+          Pencet ya baby <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SLIDE 2: GALERI FOTO INTERAKTIF ================= -->
+  <div id="slide-2" class="slide">
+    <div class="glass-card">
+      <h2 class="glow-text">Momen Kebersamaan 📸</h2>
+      <p class="subtitle" style="margin-bottom: 10px;">Klik setiap foto di bawah ini untuk membaca kata-kata manis di dalamnya!</p>
+      
+      <div class="gallery-grid">
+        <div class="photo-card" onclick="openPhotoModal('Awal Foto Kita 🌸', 'https://ibb.co.com/pBZNx8nm.jpeg', 'Foto ini adalah foto pertama kali aku ngerasa seneng banget karna aku fotbar sama kmu sampe ada orang lain di hidup aku foto ini tidak aku hapus karena aku masih sayang kamu umm.')">
+          <img src="first fotbar.jpeg" alt="Momen 1">
+          <div class="photo-overlay"><i class="fas fa-heart"></i></div>
+        </div>
+        
+        <div class="photo-card" onclick="openPhotoModal('First Hug ✨', 'first rangkul.jpeg', 'Di hari itu adalah pertama kalinya aku merangkul seorang perempuan dan bahkan memeluk dan itu orang nya kamuu aku seneng banget bisa ngerasain ituuu,lebih seneng lagi karena itu orang nya kamuu orang yang aku impikan selama ini.')">
+          <img src="first rangkul.jpeg" alt="Momen 2">
+          <div class="photo-overlay"><i class="fas fa-heart"></i></div>
+        </div>
+        
+        <div class="photo-card" onclick="openPhotoModal('Foto Gumushh 💕', 'kamuu gumushhh.jpeg', 'Sumpah loh baby ini kmu gemess bangett entah kenapa pipi kmuu tu lucuuu aku notice dri dluu pengen pegangg ga mungkin klo dlu mahhh tapi sekarang aku udah berhasil pegang pegang pipi kamu ituu ummm lucu bangettt takk kuatt😖.')">
+          <img src="kamuu gumushhh.jpeg" alt="Momen 3">
+          <div class="photo-overlay"><i class="fas fa-heart"></i></div>
+        </div>
+      </div>
+
+      <button class="btn-next" onclick="nextSlide(3)">
+        Baca Surat Cinta <i class="fas fa-envelope-open-text"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= SLIDE 3: SURAT CINTA (TYPING EFFECT) ================= -->
+  <div id="slide-3" class="slide">
+    <div class="glass-card">
+      <h2 class="glow-text">Dibaca yahh babyy 💌</h2>
+      <div class="letter-box">
+        <span id="typed-text"></span><span class="typing-cursor" id="cursor"></span>
+      </div>
+      <button class="btn-next" id="btn-to-game" style="opacity: 0; pointer-events: none; transition: opacity 0.5s;" onclick="nextSlide(4)">
+        Main Game Interaktif <i class="fas fa-gamepad"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= SLIDE 4: GAME & INTERAKSI ================= -->
+  <div id="slide-4" class="slide">
+    <div class="glass-card">
+      <h2 class="glow-text">Kuis Singkat 🎮</h2>
+      <p class="subtitle" id="question-text" style="margin-bottom: 10px;">Berapa besar sih rasa sayang kamu ke aku?</p>
+      
+      <div class="options-grid" id="options-container">
+        <button class="btn-opt" onclick="answerGame(1)">Sedikit aja deh 😜</button>
+        <button class="btn-opt" onclick="answerGame(2)">Banyak banget! 🥰</button>
+        <button class="btn-opt" onclick="answerGame(3)">Tak terhingga seluas alam semesta! 🌌</button>
+      </div>
+
+      <div id="game-result" class="game-result"></div>
+
+      <button class="btn-next" id="btn-final" style="display: none; margin-top: 15px;" onclick="nextSlide(5)">
+        Lihat Pesan Akhir <i class="fas fa-sparkles"></i>
+      </button>
+    </div>
+  </div>
+  
+
+  <!-- ================= SLIDE 5: PENUTUP ================= -->
+  <div id="slide-5" class="slide">
+    <div class="glass-card">
+      <h1 class="glow-text">I Love You My Baby! ❤️</h1>
+      <p class="subtitle">Gimana sayang web pertama aku khusus buat kamu niii?🤭 xixixixixi akuu beneran baru pertama kali tau buat ini dan seniat ini,ya meskipun ada bantuan ai tapi ini tetep btuh skill😠 akuuu sayang kamu banget baby pokoknya kita berdua akan melakukan banyak hal lagi yang belum pernah kita lakukan sama orang lain,kita sama sama first yahh ha yang kukira ga mungkin ada ternyata beneran ada.!</p>
+      <div class="big-heart">💖</div>
+      <div>
+        <button class="btn-next" onclick="resetToStart()">
+          <i class="fas fa-redo"></i> Ulangi Dari Awal
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL POPUP FOTO ================= -->
+  <div id="photo-modal" class="modal" onclick="closePhotoModalOuter(event)">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closePhotoModal()">&times;</span>
+      <img id="modal-img" class="modal-img" src="" alt="Momen">
+      <h3 id="modal-title" class="glow-text" style="font-size: 1.2rem;"></h3>
+      <p id="modal-desc" class="subtitle" style="font-size: 0.88rem; margin-bottom: 0;"></p>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /* ================= CONSTANTS & STATE ================= */
+    const CORRECT_PIN = "04072026";
+    let currentPin = "";
+    let isMusicPlaying = false;
+    let typingTimer = null;
+
+    const bgMusic = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-btn');
+
+    /* ================= MUSIC CONTROL ================= */
+    function toggleMusic() {
+      if (isMusicPlaying) {
+        bgMusic.pause();
+        musicBtn.classList.remove('playing');
+        isMusicPlaying = false;
+      } else {
+        bgMusic.play().then(() => {
+          musicBtn.classList.add('playing');
+          isMusicPlaying = true;
+        }).catch(err => {
+          console.log("Audio play error:", err);
+        });
+      }
+    }
+
+    /* ================= PIN LOCKSCREEN SYSTEM ================= */
+    function pressKey(num) {
+      if (currentPin.length < 8) {
+        currentPin += num;
+        updatePinDots();
+      }
+      if (currentPin.length === 8) {
+        setTimeout(checkPin, 100);
+      }
+    }
+
+    function deletePin() {
+      currentPin = currentPin.slice(0, -1);
+      updatePinDots();
+    }
+
+    function clearPin() {
+      currentPin = "";
+      updatePinDots();
+    }
+
+    function updatePinDots() {
+      const dots = document.querySelectorAll('.pin-display .dot');
+      dots.forEach((dot, index) => {
+        if (index < currentPin.length) {
+          dot.classList.add('filled');
+        } else {
+          dot.classList.remove('filled');
+        }
+      });
+    }
+
+    function checkPin() {
+      const errorMsg = document.getElementById('error-msg');
+      const lockCard = document.querySelector('.lock-card');
+
+      if (currentPin === CORRECT_PIN) {
+        errorMsg.style.visibility = 'hidden';
+        
+        // Auto play music on correct unlock
+        bgMusic.play().then(() => {
+          isMusicPlaying = true;
+          musicBtn.classList.add('playing');
+        }).catch(() => {
+          console.log("Browser blocked auto-play.");
+        });
+
+        nextSlide(1);
+      } else {
+        errorMsg.style.visibility = 'visible';
+        lockCard.style.animation = 'shake 0.3s ease';
+        setTimeout(() => {
+          lockCard.style.animation = '';
+          clearPin();
+        }, 350);
+      }
+    }
+
+    /* ================= SLIDE NAVIGATION ================= */
+    function nextSlide(slideNumber) {
+      const activeSlide = document.querySelector('.slide.active');
+      if (activeSlide) {
+        activeSlide.classList.remove('active');
+      }
+
+      let targetId = slideNumber === 0 ? 'lockscreen' : `slide-${slideNumber}`;
+      const targetSlide = document.getElementById(targetId);
+      if (targetSlide) {
+        targetSlide.classList.add('active');
+      }
+
+      // Trigger love letter typing effect on Slide 3
+      if (slideNumber === 3) {
+        startTypingEffect();
+      }
+    }
+
+    function resetToStart() {
+      clearPin();
+      document.getElementById('game-result').innerText = "";
+      document.getElementById('btn-final').style.display = 'none';
+      nextSlide(0);
+    }
+
+    /* ================= TYPING EFFECT (SLIDE 3) ================= */
+    const letterText = "Terima kasih banyak babyy karena kmu mau ngasih aku kesempatan jadi kekasih kamu aku seneng bangett sumpahhh takk nyangkaa bangettt apalgi kita udah lakuin banyak hall yang sebelum nya ga pernah kepikiran buat lakuinnn, aaa babyyy,kitaa jalan bareng bareng okeyy jangan menyerah apapaun ituu aku sayang banget sama kamu dan akan terus kecintaan sama kamuu,aku yakin suatu saat kita bisa jadi sepasang  suami istri! ❤️";
+
+    function startTypingEffect() {
+      const typedTextElem = document.getElementById('typed-text');
+      const cursorElem = document.getElementById('cursor');
+      const btnToGame = document.getElementById('btn-to-game');
+
+      typedTextElem.innerText = "";
+      cursorElem.style.display = 'inline-block';
+      btnToGame.style.opacity = "0";
+      btnToGame.style.pointerEvents = "none";
+
+      if (typingTimer) clearTimeout(typingTimer);
+
+      let i = 0;
+      function typeChar() {
+        if (i < letterText.length) {
+          typedTextElem.innerText += letterText.charAt(i);
+          i++;
+          typingTimer = setTimeout(typeChar, 45);
+        } else {
+          cursorElem.style.display = 'none';
+          btnToGame.style.opacity = "1";
+          btnToGame.style.pointerEvents = "auto";
+        }
+      }
+      typeChar();
+    }
+
+    /* ================= PHOTO MODAL ================= */
+    function openPhotoModal(title, imgSrc, description) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-img').src = imgSrc;
+      document.getElementById('modal-desc').innerText = description;
+      document.getElementById('photo-modal').classList.add('show');
+    }
+
+    function closePhotoModal() {
+      document.getElementById('photo-modal').classList.remove('show');
+    }
+
+    function closePhotoModalOuter(event) {
+      if (event.target.id === 'photo-modal') {
+        closePhotoModal();
+      }
+    }
+
+    /* ================= GAME INTERACTION ================= */
+    function answerGame(option) {
+      const resultDiv = document.getElementById('game-result');
+      const btnFinal = document.getElementById('btn-final');
+
+      if (option === 1) {
+        resultDiv.style.color = '#ff4d4d';
+        resultDiv.innerText = "Ehhh kok cuma sedikit? kocak kamu ah! 😜";
+        btnFinal.style.display = 'none';
+      } else if (option === 2) {
+        resultDiv.style.color = '#00ffcc';
+        resultDiv.innerText = "Yeay! Aku juga sayang bingitss sama kamu babyy! 🥰";
+        btnFinal.style.display = 'inline-flex';
+      } else if (option === 3) {
+        resultDiv.style.color = '#ff2a74';
+        resultDiv.innerText = "Aaaaa babyyy! kiss me plisss! 🌌💖";
+        btnFinal.style.display = 'inline-flex';
+      }
+    }
+
+    /* ================= FLOATING HEART PARTICLES GENERATOR ================= */
+    function createHeartParticle() {
+      const container = document.getElementById('heart-particles');
+      const heart = document.createElement('i');
+      heart.classList.add('fas', 'fa-heart', 'floating-heart-particle');
+      
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      heart.style.fontSize = (Math.random() * 12 + 10) + 'px';
+      heart.style.opacity = Math.random() * 0.7 + 0.3;
+
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(createHeartParticle, 600);
+  </script>
+</body>
+</html>
